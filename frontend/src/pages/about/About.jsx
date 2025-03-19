@@ -87,7 +87,7 @@ const About = () => {
         <p className="mb-4">
           If you have any questions or would like to learn more about us, please
           feel free to get in touch at{" "}
-          <a href="mailto:info@example.com" className="text-blue-500 underline">
+          <a href="mailto:info@example.com" className="text-primary underline">
             info@example.com
           </a>
           .

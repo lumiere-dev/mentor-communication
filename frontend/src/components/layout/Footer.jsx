@@ -37,16 +37,16 @@ const Footer = () => {
           </p>
           <div className="flex items-center justify-center gap-4 md:gap-8">
             <Link to="">
-              <FaFacebookF className="text-blue-600 text-xl" />
+              <FaFacebookF className="text-primary text-xl" />
             </Link>
             <Link to="">
-              <FaInstagram className="text-blue-600 text-xl" />
+              <FaInstagram className="text-primary text-xl" />
             </Link>
             <Link to="">
-              <FaLinkedin className="text-blue-600 text-xl" />
+              <FaLinkedin className="text-primary text-xl" />
             </Link>
             <Link to="">
-              <FaYoutube className="text-blue-600 text-xl" />
+              <FaYoutube className="text-primary text-xl" />
             </Link>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Footer = () => {
         <section className="container mx-auto px-5 flex items-center justify-between">
           <p className="text-xs text-gray-800">
             Copyright © 2023{" "}
-            <Link to="/" className="text-blue-600">
+            <Link to="/" className="text-primary">
               Mentor Communication
             </Link>
           </p>

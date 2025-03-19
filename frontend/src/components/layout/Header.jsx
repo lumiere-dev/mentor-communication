@@ -2,6 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 
 const pages = [
   {
+    title: "Home",
+    link: "/",
+  },
+  {
     title: "About Us",
     link: "/about",
   },
@@ -13,9 +17,8 @@ const pages = [
 
 const Header = () => {
   const { pathname } = useLocation();
-  console.log("pathname", pathname);
   return (
-    <header className="w-full bg-blue-600">
+    <header className="w-full bg-primary">
       <section className="container mx-auto flex items-center justify-between h-[70px]">
         <Link to="/" className="text-white font-bold text-sm md:text-base">
           Mentor <span className="font-normal">Communication</span>

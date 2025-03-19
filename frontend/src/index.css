@@ -7,6 +7,14 @@ body {
   font-family: "Poppins", sans-serif !important;
 }
 
+:root {
+  --primary: #002e5c;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+}
+
 .scroll-0::-webkit-scrollbar {
   width: 0;
 }

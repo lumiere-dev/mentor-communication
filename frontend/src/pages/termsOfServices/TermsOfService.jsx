@@ -92,7 +92,7 @@ const TermsOfService = () => {
         <h2 className="text-xl font-semibold mb-4">9. Contact Information</h2>
         <p className="mb-4 text-gray-600">
           If you have any questions about these Terms, please contact us at{" "}
-          <a href="mailto:info@example.com" className="text-blue-500 underline">
+          <a href="mailto:info@example.com" className="text-primary underline">
             info@example.com
           </a>
           .
