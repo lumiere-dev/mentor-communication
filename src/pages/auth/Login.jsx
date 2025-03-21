@@ -1,5 +1,4 @@
 import { FcGoogle } from "react-icons/fc";
-
 const Login = () => {
   const handleConnect = (e) => {
     e.preventDefault();
@@ -14,7 +13,9 @@ const Login = () => {
     window.open(authUrl, "_blank");
   };
   return (
-    <section className="w-full h-svh md:h-screen overflow-y-scroll scroll-0 bg-[#f0f0f0] md:bg-[url('../../../src/assets/images/authimage.png')] bg-contain bg-no-repeat bg-left">
+    <section
+      className={`w-full h-svh md:h-screen overflow-y-scroll scroll-0 bg-[#f0f0f0] md:bg-[url('/assets/images/authimage.png')]  bg-contain bg-no-repeat bg-left`}
+    >
       <section className="container mx-auto px-5 py-8 md:py-14 w-full h-full grid grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-6 hidden lg:block"></div>
         <div className="lg:col-span-6 grid place-items-center">
