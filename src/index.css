@@ -22,3 +22,9 @@ body {
 body::-webkit-scrollbar {
   width: 0;
 }
+
+@media (min-width: 768px) {
+  .bg-dynamic {
+    background-image: var(--bg-image);
+  }
+}
