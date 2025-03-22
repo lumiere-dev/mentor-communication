@@ -1,17 +1,19 @@
 import { FcGoogle } from "react-icons/fc";
-import bgImage from "../../assets/images/authimage.png";
-const Login = () => {
-  const handleConnect = (e) => {
-    e.preventDefault();
-    const clientId = import.meta.env.VITE_REACT_APP_NYLAS_CLIENT_ID;
-    const redirectUri = import.meta.env.VITE_REACT_APP_NYLAS_REDIRECT_URI;
-    console.log(clientId, redirectUri);
-    const codeChallenge = "nylas";
-    const authUrl = `https://api.us.nylas.com/v3/connect/auth?client_id=${clientId}&redirect_uri=${encodeURIComponent(
-      redirectUri
-    )}&response_type=code&code_challenge=${codeChallenge}&code_challenge_method=plain`;
+import axios from "axios";
 
-    window.open(authUrl, "_blank");
+const Login = () => {
+  const handleConnect = async (e) => {
+    e.preventDefault();
+    try {
+      const serverUrl = "http://localhost:5002";
+      if (!serverUrl) return alert("server url not found");
+      const response = await axios.get(`${serverUrl}/get-url`, {
+        withCredentials: true,
+      });
+      window.open(response?.data?.authUrl, "_blank");
+    } catch (error) {
+      console.log("server url not found", error);
+    }
   };
   return (
     <section
