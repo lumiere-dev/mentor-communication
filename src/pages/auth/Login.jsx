@@ -5,8 +5,7 @@ const Login = () => {
   const handleConnect = async (e) => {
     e.preventDefault();
     try {
-      // const serverUrl = "http://localhost:5002";
-      const serverUrl = "https://mentor-communication-backend-1.onrender.com";
+      const serverUrl = import.meta.env.VITE_REACT_APP_SERVER_URL;
       if (!serverUrl) return alert("server url not found");
       const response = await axios.get(`${serverUrl}/get-url`, {
         withCredentials: true,
