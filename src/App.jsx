@@ -6,6 +6,7 @@ import TermsOfService from "./pages/termsOfServices/TermsOfService";
 import Home from "./pages/home/Home";
 const Signup = lazy(() => import("./pages/auth/Signup"));
 const Login = lazy(() => import("./pages/auth/Login"));
+const PrivacyPolicy = lazy(() => import("./pages/privacyPolicy/PrivacyPolicy"));
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Route>
       </Routes>
     </BrowserRouter>

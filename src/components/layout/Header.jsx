@@ -6,12 +6,16 @@ const pages = [
     link: "/",
   },
   {
-    title: "About Us",
-    link: "/about",
+    title: "Privacy Policy",
+    link: "/privacy-policy",
   },
   {
     title: "Terms of Service",
     link: "/terms-of-service",
+  },
+  {
+    title: "Login",
+    link: "/login",
   },
 ];
 
@@ -23,18 +27,28 @@ const Header = () => {
         <Link to="/" className="text-white font-bold text-sm md:text-base">
           Mentor <span className="font-normal">Communication</span>
         </Link>
-        <div className="flex items-center gap-4">
-          {pages.map((page, i) => (
-            <Link
-              to={page.link}
-              key={i}
-              className={`text-sm md:text-base font-medium ${
-                pathname === page.link ? "text-orange-300" : "text-white"
-              }`}
-            >
-              {page.title}
-            </Link>
-          ))}
+        <div className="flex items-center gap-8">
+          {pages.map((page, i) =>
+            page.link === "/login" ? (
+              <Link
+                to={page.link}
+                key={i}
+                className="bg-orange-300 px-5 py-1 rounded-sm text-black/75 text-sm md:text-base font-medium"
+              >
+                {page.title}
+              </Link>
+            ) : (
+              <Link
+                to={page.link}
+                key={i}
+                className={`text-sm md:text-base font-medium ${
+                  pathname === page.link ? "text-orange-300" : "text-white"
+                }`}
+              >
+                {page.title}
+              </Link>
+            )
+          )}
         </div>
       </section>
     </header>
