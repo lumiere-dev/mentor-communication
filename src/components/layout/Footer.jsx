@@ -25,15 +25,14 @@ const Footer = () => {
       <section className="container mx-auto px-5 py-8 md:py-10 grid place-items-center">
         <div className="w-full max-w-[700px] mx-auto">
           <h4 className="text-center text-gray-900 font-semibold">
-            Mentor Communication
+            Lumiere Education | Mentor Communication
           </h4>
           <p className="text-sm text-gray-700 text-center my-5">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-            voluptates accusantium quia soluta error ea officia nihil
-            architecto, dolore voluptatem! Exercitationem dolore totam, aperiam
-            commodi hic ipsa excepturi doloribus, magni expedita nemo assumenda?
-            Excepturi, ab molestiae voluptatum beatae minus libero sit quidem
-            tempore suscipit laudantium fugit delectus totam. Error, quae.
+            Lumiere Education's Mentor Communication platform facilitates seamless 
+            interaction between mentors and students. Our secure system ensures 
+            timely responses to student queries through intelligent monitoring 
+            and notifications, enhancing the educational experience for both 
+            mentors and students.
           </p>
           <div className="flex items-center justify-center gap-4 md:gap-8">
             <Link to="">
@@ -56,7 +55,7 @@ const Footer = () => {
           <p className="text-xs text-gray-800">
             Copyright © 2023{" "}
             <Link to="/" className="text-primary">
-              Mentor Communication
+              Lumiere Education
             </Link>
           </p>
           <div className="flex items-center gap-4">
