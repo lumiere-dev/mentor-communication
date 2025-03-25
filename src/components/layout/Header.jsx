@@ -22,10 +22,10 @@ const pages = [
 const Header = () => {
   const { pathname } = useLocation();
   return (
-    <header className="w-full bg-primary">
-      <section className="container mx-auto flex items-center justify-between h-[70px]">
+    <header className="w-full bg-primary shadow-md">
+      <section className="container mx-auto flex items-center justify-between h-[70px] px-4">
         <Link to="/" className="text-white font-bold text-sm md:text-base">
-          Mentor <span className="font-normal">Communication</span>
+          <span className="bg-gradient-to-r from-blue-100 to-indigo-100 bg-clip-text text-transparent">Lumiere</span> <span className="font-normal">Education</span>
         </Link>
         <div className="flex items-center gap-8">
           {pages.map((page, i) =>
