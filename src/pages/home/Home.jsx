@@ -9,18 +9,44 @@ const Home = () => {
         </div>
         <div className="py-16 md:py-24 relative z-10">
           <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
             </svg>
           </div>
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">Lumiere Education</h1>
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
+            Lumiere Education
+          </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-            Connecting students with educational mentors for personalized growth and success
+            Connecting students with educational mentors for personalized growth
+            and success
           </p>
-          <a href="/login" className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          <a
+            href="/login"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
             Get Started
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
             </svg>
           </a>
         </div>
@@ -31,22 +57,39 @@ const Home = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
             <h2 className="text-3xl font-semibold mb-6 text-blue-800 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8 mr-3 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               About Lumiere Education
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Lumiere Education specializes in connecting students with experienced mentors to provide personalized educational guidance and support. Our platform facilitates meaningful mentor-student relationships that foster academic growth and personal development.
+              Lumiere Education specializes in connecting students with
+              experienced mentors to provide personalized educational guidance
+              and support. Our platform facilitates meaningful mentor-student
+              relationships that foster academic growth and personal
+              development.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              We're dedicated to making quality mentorship accessible to students worldwide, helping them navigate their educational journey with confidence and clarity.
+              We're dedicated to making quality mentorship accessible to
+              students worldwide, helping them navigate their educational
+              journey with confidence and clarity.
             </p>
           </div>
           <div className="md:w-1/2">
-            <img 
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-              alt="Students collaborating" 
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Students collaborating"
               className="rounded-xl shadow-lg object-cover w-full h-64 md:h-80"
             />
           </div>
@@ -54,7 +97,7 @@ const Home = () => {
       </section>
 
       {/* Programs Section */}
-      <section className="mb-20">
+      {/* <section className="mb-20">
         <h2 className="text-3xl font-semibold mb-8 text-center text-blue-800 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -185,10 +228,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
-      <section className="mb-20 py-12 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-lg text-white">
+      {/* <section className="mb-20 py-12 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-lg text-white">
         <h2 className="text-3xl font-semibold mb-12 text-center">Our Impact</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-8">
           <div className="text-center">
@@ -208,10 +251,10 @@ const Home = () => {
             <div className="text-blue-100">Countries Served</div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
-      <section className="mb-20 bg-gradient-to-tr from-indigo-50 to-blue-50 p-10 rounded-2xl">
+      {/* <section className="mb-20 bg-gradient-to-tr from-indigo-50 to-blue-50 p-10 rounded-2xl">
         <h2 className="text-3xl font-semibold mb-10 text-center text-blue-800 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
@@ -254,29 +297,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="mb-12 text-center bg-white p-12 rounded-2xl shadow-lg border border-blue-100">
-        <h2 className="text-3xl font-semibold mb-6 text-blue-800">Ready to Begin Your Journey?</h2>
-        <p className="text-gray-700 max-w-2xl mx-auto mb-8 leading-relaxed">
-          Join Lumiere Education today and connect with mentors who can help you achieve your educational goals and unlock your full potential.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/login" className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-            </svg>
-            Sign Up
-          </a>
-          <a href="/about" className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 font-medium rounded-lg shadow-md border border-blue-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-            </svg>
-            Learn More
-          </a>
-        </div>
-      </section>
+      </section> */}
     </div>
   );
 };

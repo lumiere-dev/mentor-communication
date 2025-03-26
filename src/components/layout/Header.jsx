@@ -6,8 +6,8 @@ const pages = [
     link: "/",
   },
   {
-    title: "About",
-    link: "/about",
+    title: "Notification",
+    link: "/notification",
   },
   {
     title: "Privacy Policy",
@@ -30,7 +30,9 @@ const Header = () => {
       <section className="container mx-auto flex items-center justify-between h-[80px] px-4">
         <Link to="/" className="flex items-center space-x-2">
           <span className="text-white font-bold text-xl md:text-2xl">
-            <span className="bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">Mentor</span>
+            <span className="bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
+              Mentor
+            </span>
             <span className="font-light text-white"> Communication</span>
           </span>
         </Link>
@@ -49,9 +51,7 @@ const Header = () => {
                 to={page.link}
                 key={i}
                 className={`text-sm font-medium hover:text-amber-200 transition-colors duration-200 relative ${
-                  pathname === page.link 
-                    ? "text-amber-300" 
-                    : "text-gray-100"
+                  pathname === page.link ? "text-amber-300" : "text-gray-100"
                 }`}
               >
                 {page.title}
