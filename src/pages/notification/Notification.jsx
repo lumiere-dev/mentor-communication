@@ -1,34 +1,86 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { notificationData, tableStyles } from "../../data/data";
-import { Link } from "react-router-dom";
-import NotificationModal from "./NotificaionModal";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { tableStyles } from "../../data/data";
+import NotificationModal from "./NotificaionModal";
+import { convert } from "html-to-text";
 
 const correctNumber = 1234;
 
 const Notification = () => {
   const [modalOpen, setModalOpen] = useState(true);
   const [userInput, setUserInput] = useState("");
+  const [emails, setEmails] = useState([]);
+
+  const extractText = (email) => {
+    const extractedText = convert(email, {
+      wordwrap: false,
+      ignoreImage: true,
+      ignoreHref: true,
+    });
+    return extractedText;
+  };
+  const columns = [
+    {
+      name: "sender",
+      selector: (row) => row.sender,
+      maxWidth: "5rem",
+    },
+    {
+      name: "Subject",
+      selector: (row) => row.subject_line,
+      maxWidth: "12rem",
+    },
+    {
+      name: "Mentor email",
+      selector: (row) => row.mentor_email,
+      maxWidth: "13rem",
+    },
+    {
+      name: "Student email",
+      selector: (row) => row.student_email,
+      maxWidth: "13rem",
+    },
+    {
+      name: "email",
+      selector: (row) => extractText(row.email_body),
+    },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (parseInt(userInput) === correctNumber) {
-      setModalOpen(false);
-    } else {
-      toast.error("Incorrect number! Try again.");
+    if (parseInt(userInput) === correctNumber) setModalOpen(false);
+    else toast.error("Incorrect number! Try again.");
+  };
+
+  const getAllNotifications = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/emails`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setEmails(data || []);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  useEffect(() => {
+    getAllNotifications();
+  }, []);
 
   return (
     <div className="container mx-auto py-10 md:py-[75px] px-5">
       <section className="bg-white rounded-lg border p-4 lg:p-5 shadow-sm">
-        <div className="text-sm text-textColor font-semibold">
-          Notification Summary
-        </div>
+        <div className="text-sm text-textColor font-semibold">Notification Summary</div>
         <DataTable
-          data={notificationData}
+          data={emails}
           columns={columns}
           selectableRowsHighlight
           customStyles={tableStyles}
@@ -40,9 +92,7 @@ const Notification = () => {
       {modalOpen && (
         <NotificationModal>
           <form className="p-6 text-center" onSubmit={handleSubmit}>
-            <h2 className="text-lg font-semibold mb-4">
-              Enter the Correct Number to Continue
-            </h2>
+            <h2 className="text-lg font-semibold mb-4">Enter the Correct Number to Continue</h2>
             <input
               type="number"
               value={userInput}
@@ -50,10 +100,7 @@ const Notification = () => {
               className="border p-2 rounded w-full text-center outline-none"
               placeholder="Enter number"
             />
-            <button
-              type="submit"
-              className="bg-primary text-white px-4 py-2 rounded mt-4 cursor-pointer"
-            >
+            <button type="submit" className="bg-primary text-white px-4 py-2 rounded mt-4 cursor-pointer">
               Submit
             </button>
           </form>
@@ -64,31 +111,3 @@ const Notification = () => {
 };
 
 export default Notification;
-
-const columns = [
-  {
-    name: "Notification",
-    selector: (row) => row.notification,
-    width: "30%",
-  },
-  {
-    name: "Notification Type",
-    selector: (row) => row.notificationType,
-  },
-  {
-    name: "Date",
-    selector: (row) => row.date,
-  },
-  {
-    name: "Status ",
-    selector: (row) => row.status,
-  },
-  {
-    name: "Actions",
-    selector: () => (
-      <Link href="" className="underline text-[13px] font-medium text-primary">
-        View contract
-      </Link>
-    ),
-  },
-];
