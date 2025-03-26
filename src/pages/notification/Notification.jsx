@@ -78,7 +78,7 @@ const Notification = () => {
   return (
     <div className="container mx-auto py-10 md:py-[75px] px-5">
       <section className="bg-white rounded-lg border p-4 lg:p-5 shadow-sm">
-        <div className="text-sm text-textColor font-semibold">Notification Summary</div>
+        <div className="text-sm text-textColor font-semibold">Emails Summary</div>
         <DataTable
           data={emails}
           columns={columns}

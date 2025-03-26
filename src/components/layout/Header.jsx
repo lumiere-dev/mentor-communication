@@ -6,8 +6,8 @@ const pages = [
     link: "/",
   },
   {
-    title: "Notification",
-    link: "/notification",
+    title: "Emails",
+    link: "/emails",
   },
   {
     title: "Privacy Policy",
@@ -30,9 +30,7 @@ const Header = () => {
       <section className="container mx-auto flex items-center justify-between h-[80px] px-4">
         <Link to="/" className="flex items-center space-x-2">
           <span className="text-white font-bold text-xl md:text-2xl">
-            <span className="bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">
-              Mentor
-            </span>
+            <span className="bg-gradient-to-r from-amber-200 to-yellow-100 bg-clip-text text-transparent">Mentor</span>
             <span className="font-light text-white"> Communication</span>
           </span>
         </Link>

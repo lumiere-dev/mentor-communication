@@ -12,13 +12,7 @@ const Notification = lazy(() => import("./pages/notification/Notification"));
 function App() {
   return (
     <BrowserRouter>
-      <Suspense
-        fallback={
-          <div className="flex items-center justify-center h-screen">
-            Loading...
-          </div>
-        }
-      >
+      <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
         <Toaster position="top-right" />
         <Routes>
           <Route path="/signup" element={<Signup />} />
@@ -27,7 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/notification" element={<Notification />} />
+            <Route path="/emails" element={<Notification />} />
           </Route>
         </Routes>
       </Suspense>
