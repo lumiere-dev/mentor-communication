@@ -10,7 +10,7 @@ const Login = () => {
       const response = await axios.get(`${serverUrl}/get-url`, {
         withCredentials: true,
       });
-      window.open(response?.data?.authUrl, "_blank");
+      window.location.href = response?.data?.authUrl;
     } catch (error) {
       console.log("server url not found", error);
     }
