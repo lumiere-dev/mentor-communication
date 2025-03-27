@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import TermsOfService from "./pages/termsOfServices/TermsOfService";
 import { Toaster } from "react-hot-toast";
 import MentorEmails from "./pages/notification/MentorEmails";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
 const Signup = lazy(() => import("./pages/auth/Signup"));
 const Login = lazy(() => import("./pages/auth/Login"));
 const PrivacyPolicy = lazy(() => import("./pages/privacyPolicy/PrivacyPolicy"));
@@ -22,8 +23,22 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/emails" element={<Notification />} />
-            <Route path="/mentor-emails" element={<MentorEmails />} />
+            <Route 
+              path="/emails" 
+              element={
+                <ProtectedRoute>
+                  <Notification />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/mentor-emails" 
+              element={
+                <ProtectedRoute>
+                  <MentorEmails />
+                </ProtectedRoute>
+              } 
+            />
           </Route>
         </Routes>
       </Suspense>

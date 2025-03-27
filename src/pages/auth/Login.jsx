@@ -1,15 +1,29 @@
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
+  const location = useLocation();
+  
+  // Get the redirect path from location state (passed by ProtectedRoute)
+  const from = location.state?.from?.pathname || "/mentor-emails";
+  
   const handleConnect = async (e) => {
     e.preventDefault();
     try {
       const serverUrl = import.meta.env.VITE_REACT_APP_SERVER_URL;
       if (!serverUrl) return alert("server url not found");
+      
+      // Store the intended redirect location in localStorage
+      localStorage.setItem("redirectAfterLogin", from);
+      
       const response = await axios.get(`${serverUrl}/get-url`, {
         withCredentials: true,
+        params: {
+          redirect: from
+        }
       });
+      
       window.location.href = response?.data?.authUrl;
     } catch (error) {
       console.log("server url not found", error);
