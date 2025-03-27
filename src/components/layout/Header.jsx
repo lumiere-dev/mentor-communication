@@ -6,10 +6,6 @@ const pages = [
     link: "/",
   },
   {
-    title: "Emails",
-    link: "/emails",
-  },
-  {
     title: "Privacy Policy",
     link: "/privacy-policy",
   },
