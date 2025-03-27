@@ -1,10 +1,11 @@
-"use client";
 import { convert } from "html-to-text";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { tableStyles } from "../../data/data";
+import { useParams } from "react-router-dom";
 
 const MentorEmails = () => {
+  const params = useParams();
   const [emails, setEmails] = useState([]);
 
   const extractText = (email) => {
@@ -42,25 +43,22 @@ const MentorEmails = () => {
     },
   ];
 
-  const getAllNotifications = async () => {
+  const getAllNotifications = useCallback(async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/emails`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let url = `${import.meta.env.VITE_REACT_APP_SERVER_URL}/emails`;
+      if (params.email) url += `?email=${params.email}`;
+      const response = await fetch(url, { method: "GET", headers: { "Content-Type": "application/json" } });
       const data = await response.json();
       setEmails(data || []);
       console.log(data);
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [params.email]);
 
   useEffect(() => {
     getAllNotifications();
-  }, []);
+  }, [getAllNotifications]);
 
   return (
     <div className="container mx-auto py-10 md:py-[75px] px-5">

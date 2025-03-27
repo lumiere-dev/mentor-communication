@@ -1,12 +1,9 @@
-"use client";
+import { convert } from "html-to-text";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 import { tableStyles } from "../../data/data";
 import NotificationModal from "./NotificaionModal";
-import { convert } from "html-to-text";
-
 const correctNumber = 9986575060;
 
 const Notification = () => {

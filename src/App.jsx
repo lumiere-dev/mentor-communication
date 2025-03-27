@@ -22,7 +22,7 @@ function App() {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/emails" element={<Notification />} />
-            <Route path="/mentor-emails" element={<Notification />} />
+            <Route path="/mentor-emails/:email" element={<Notification />} />
           </Route>
         </Routes>
       </Suspense>
