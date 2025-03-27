@@ -7,7 +7,7 @@ import { tableStyles } from "../../data/data";
 import NotificationModal from "./NotificaionModal";
 import { convert } from "html-to-text";
 
-const correctNumber = "alina&prakriti";
+const correctNumber = 9986575060;
 
 const Notification = () => {
   const [modalOpen, setModalOpen] = useState(true);
@@ -94,7 +94,7 @@ const Notification = () => {
           <form className="p-6 text-center" onSubmit={handleSubmit}>
             <h2 className="text-lg font-semibold mb-4">Enter the Correct Number to Continue</h2>
             <input
-              type="text"
+              type="number"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               className="border p-2 rounded w-full text-center outline-none"
