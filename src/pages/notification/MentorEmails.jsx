@@ -1,17 +1,10 @@
 "use client";
+import { convert } from "html-to-text";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 import { tableStyles } from "../../data/data";
-import NotificationModal from "./NotificaionModal";
-import { convert } from "html-to-text";
 
-const correctNumber = 9986575060;
-
-const Notification = () => {
-  const [modalOpen, setModalOpen] = useState(true);
-  const [userInput, setUserInput] = useState("");
+const MentorEmails = () => {
   const [emails, setEmails] = useState([]);
 
   const extractText = (email) => {
@@ -49,12 +42,6 @@ const Notification = () => {
     },
   ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (parseInt(userInput) === correctNumber) setModalOpen(false);
-    else toast.error("Incorrect number! Try again.");
-  };
-
   const getAllNotifications = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/emails`, {
@@ -88,26 +75,8 @@ const Notification = () => {
           fixedHeaderScrollHeight="70vh"
         />
       </section>
-
-      {modalOpen && (
-        <NotificationModal>
-          <form className="p-6 text-center" onSubmit={handleSubmit}>
-            <h2 className="text-lg font-semibold mb-4">Enter the Correct Number to Continue</h2>
-            <input
-              type="number"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              className="border p-2 rounded w-full text-center outline-none"
-              placeholder="Enter number"
-            />
-            <button type="submit" className="bg-primary text-white px-4 py-2 rounded mt-4 cursor-pointer">
-              Submit
-            </button>
-          </form>
-        </NotificationModal>
-      )}
     </div>
   );
 };
 
-export default Notification;
+export default MentorEmails;
