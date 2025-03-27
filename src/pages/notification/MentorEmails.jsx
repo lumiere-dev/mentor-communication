@@ -2,12 +2,9 @@ import { convert } from "html-to-text";
 import React, { useCallback, useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { tableStyles } from "../../data/data";
-import { useParams } from "react-router-dom";
 
 const MentorEmails = () => {
-  const params = useParams();
   const [emails, setEmails] = useState([]);
-
   const extractText = (email) => {
     const extractedText = convert(email, {
       wordwrap: false,
@@ -42,20 +39,21 @@ const MentorEmails = () => {
       selector: (row) => extractText(row.email_body),
     },
   ];
-
   const getAllNotifications = useCallback(async () => {
     try {
-      let url = `${import.meta.env.VITE_REACT_APP_SERVER_URL}/emails`;
-      if (params.email) url += `?email=${params.email}`;
-      const response = await fetch(url, { method: "GET", headers: { "Content-Type": "application/json" } });
+      let url = `${import.meta.env.VITE_REACT_APP_SERVER_URL}/mentor-emails`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
       const data = await response.json();
       setEmails(data || []);
       console.log(data);
     } catch (error) {
       console.log(error);
     }
-  }, [params.email]);
-
+  }, []);
   useEffect(() => {
     getAllNotifications();
   }, [getAllNotifications]);
