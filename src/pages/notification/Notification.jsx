@@ -89,7 +89,7 @@ const Notification = () => {
         />
       </section>
 
-      {modalOpen && (
+      {/* {modalOpen && (
         <NotificationModal>
           <form className="p-6 text-center" onSubmit={handleSubmit}>
             <h2 className="text-lg font-semibold mb-4">Enter the Correct Number to Continue</h2>
@@ -105,7 +105,7 @@ const Notification = () => {
             </button>
           </form>
         </NotificationModal>
-      )}
+      )} */}
     </div>
   );
 };
