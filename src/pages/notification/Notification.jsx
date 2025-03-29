@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import toast from "react-hot-toast";
 import { tableStyles } from "../../data/data";
 import NotificationModal from "./NotificaionModal";
-const correctNumber = 9986575060;
+const correctNumber = 9986575060; 
 
 const Notification = () => {
   const [modalOpen, setModalOpen] = useState(true);
