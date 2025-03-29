@@ -10,6 +10,7 @@ const Signup = lazy(() => import("./pages/auth/Signup"));
 const Login = lazy(() => import("./pages/auth/Login"));
 const PrivacyPolicy = lazy(() => import("./pages/privacyPolicy/PrivacyPolicy"));
 const Notification = lazy(() => import("./pages/notification/Notification"));
+const ThreadView = lazy(() => import("./pages/notification/ThreadView"));
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MentorEmails />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/thread/:studentMentorPair" 
+              element={
+                <ProtectedRoute>
+                  <ThreadView />
                 </ProtectedRoute>
               } 
             />
