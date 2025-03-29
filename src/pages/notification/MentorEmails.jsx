@@ -37,30 +37,52 @@ const MentorEmails = () => {
       name: "Student Email",
       selector: (row) => row.student_email,
       sortable: true,
-      maxWidth: "200px",
+      width: "25%",
+      cell: (row) => (
+        <div className="truncate font-medium">{row.student_email}</div>
+      )
     },
     {
       name: "Subject",
       selector: (row) => row.latest_subject,
       sortable: true,
-      maxWidth: "200px",
-    },
-    {
-      name: "Preview",
-      selector: (row) => formatPreview(row.latest_email_preview),
-      maxWidth: "300px",
+      width: "25%",
+      cell: (row) => (
+        <div className="truncate" title={row.latest_subject}>
+          {row.latest_subject}
+        </div>
+      )
     },
     {
       name: "Last Sender",
       selector: (row) => row.latest_sender,
       sortable: true,
-      maxWidth: "120px",
+      width: "20%",
       cell: (row) => (
         <div className="flex items-center">
-          <span>{row.latest_sender}</span>
-          {row.needs_response && (
-            <span className="ml-2 w-3 h-3 rounded-full bg-red-500" title="Needs response"></span>
-          )}
+          <div className="flex items-center">
+            {row.latest_sender === "Student" ? (
+              <div className="flex items-center">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-500 mr-3 font-medium text-sm">S</span>
+                <span>Student</span>
+              </div>
+            ) : (
+              <div className="flex items-center">
+                <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-green-100 text-green-500 mr-3 font-medium text-sm">M</span>
+                <span>Mentor</span>
+              </div>
+            )}
+            <div className="flex items-center ml-2">
+              {row.recipient_type === "CC" && (
+                <span className="px-1.5 py-0.5 bg-gray-200 text-gray-700 rounded text-xs font-medium mr-2">
+                  CC
+                </span>
+              )}
+              {row.needs_response && (
+                <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" title="Needs response"></span>
+              )}
+            </div>
+          </div>
         </div>
       ),
     },
@@ -68,13 +90,23 @@ const MentorEmails = () => {
       name: "Last Message",
       selector: (row) => formatDate(row.latest_timestamp),
       sortable: true,
-      maxWidth: "180px",
+      width: "20%",
+      cell: (row) => (
+        <div className="whitespace-nowrap">{formatDate(row.latest_timestamp)}</div>
+      )
     },
     {
-      name: "Messages",
+      name: "Count",
       selector: (row) => row.email_count,
       sortable: true,
-      maxWidth: "100px",
+      width: "10%",
+      cell: (row) => (
+        <div className="text-center w-full">
+          <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">
+            {row.email_count}
+          </span>
+        </div>
+      )
     },
   ];
 
@@ -101,22 +133,31 @@ const MentorEmails = () => {
   }, [getThreadGroups]);
 
   return (
-    <div className="container mx-auto py-10 md:py-[75px] px-5">
-      <section className="bg-white rounded-lg border p-4 lg:p-5 shadow-sm">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-800">Student Communications</h2>
-          <button 
-            onClick={() => getThreadGroups()} 
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          >
-            Refresh
-          </button>
+    <div className="container mx-auto py-10 md:py-[75px] px-5 max-w-6xl">
+      <section className="bg-white rounded-lg border p-0 lg:p-0 shadow-lg overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
+          <div className="flex justify-between items-center">
+            <div>
+              <h2 className="text-2xl font-bold">Student Communications</h2>
+              <p className="text-blue-100 mt-1">Manage your student conversations</p>
+            </div>
+            <button 
+              onClick={() => getThreadGroups()} 
+              className="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-blue-50 transition-all duration-200 font-medium flex items-center space-x-2 shadow-md"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <span>Refresh</span>
+            </button>
+          </div>
         </div>
         
-        <div className="mb-4">
-          <p className="text-sm text-gray-600">
-            <span className="font-medium">Red dot</span>: Student message needs response within 10 minutes
-          </p>
+        <div className="bg-blue-50 px-6 py-3 border-y border-blue-100 flex items-center">
+          <div className="flex items-center text-sm text-blue-700">
+            <span className="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>
+            <span className="font-medium">Messages requiring response within 10 minutes</span>
+          </div>
         </div>
         
         <DataTable
@@ -131,8 +172,15 @@ const MentorEmails = () => {
           onRowClicked={handleRowClick}
           customStyles={tableStyles}
           fixedHeader
-          fixedHeaderScrollHeight="70vh"
-          noDataComponent="No emails found"
+          fixedHeaderScrollHeight="calc(100vh - 250px)"
+          noDataComponent={
+            <div className="p-10 flex flex-col items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <p className="text-gray-500 text-lg">No emails found</p>
+            </div>
+          }
         />
       </section>
     </div>

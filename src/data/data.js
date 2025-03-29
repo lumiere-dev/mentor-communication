@@ -1,24 +1,93 @@
 const tableStyles = {
+  table: {
+    style: {
+      borderRadius: '8px',
+      overflow: 'hidden',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
+    },
+  },
+  headRow: {
+    style: {
+      backgroundColor: '#f8fafc',
+      borderBottom: 'none',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
+      paddingTop: '12px',
+      paddingBottom: '12px',
+    },
+  },
   headCells: {
     style: {
-      fontSize: "14px",
-      fontWeight: 500,
-      color: "#7E7E7E",
-      borderBottom: "1px solid #32343CB2 !important",
+      fontSize: '13px',
+      fontWeight: '600',
+      textTransform: 'uppercase',
+      letterSpacing: '0.5px',
+      color: '#64748b',
+      borderBottom: 'none !important',
+      padding: '16px',
     },
   },
   rows: {
     style: {
-      background: "transparent",
-      padding: "10px 0",
-      margin: "0",
-      borderBottomStyle: "dashed !important",
+      background: '#ffffff',
+      minHeight: '60px',
+      transition: 'all 0.2s ease',
+      backgroundColor: 'transparent',
+      borderBottomStyle: 'solid !important',
+      borderBottomWidth: '1px',
+      borderBottomColor: '#f1f5f9',
+      '&:hover': {
+        backgroundColor: '#f8fafc',
+        transform: 'translateY(-1px)',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.05)',
+        cursor: 'pointer',
+      },
+    },
+    highlightOnHoverStyle: {
+      backgroundColor: '#f1f5f9',
+      cursor: 'pointer',
     },
   },
   cells: {
     style: {
-      color: "#32343C",
-      fontSize: "13px",
+      color: '#1e293b',
+      fontSize: '14px',
+      padding: '16px',
+      fontWeight: '400',
+    },
+  },
+  pagination: {
+    style: {
+      border: 'none',
+      backgroundColor: '#ffffff',
+      borderTop: '1px solid #f1f5f9',
+      padding: '16px',
+    },
+    pageButtonsStyle: {
+      color: '#64748b',
+      fill: '#64748b',
+      borderRadius: '6px',
+      backgroundColor: 'transparent',
+      '&:hover:not(:disabled)': {
+        backgroundColor: '#f1f5f9',
+      },
+      '&:focus': {
+        outline: 'none',
+        backgroundColor: '#e2e8f0',
+      },
+    },
+  },
+  noData: {
+    style: {
+      padding: '40px',
+      color: '#64748b',
+      backgroundColor: '#ffffff',
+    },
+  },
+  progress: {
+    style: {
+      color: '#3B82F6',
+      backgroundColor: '#ffffff',
+      padding: '30px',
     },
   },
 };

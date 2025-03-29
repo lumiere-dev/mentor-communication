@@ -53,104 +53,125 @@ const ThreadView = () => {
     fetchThreadDetails();
   }, [fetchThreadDetails]);
 
-  // Function to determine message class based on sender
-  const getMessageClass = (sender) => {
-    return sender === 'Student' 
-      ? 'bg-blue-100 border-blue-300' 
-      : 'bg-green-100 border-green-300';
-  };
-
-  // Function to determine avatar letter based on sender
-  const getAvatarLetter = (sender, email) => {
-    if (sender === 'Student') {
-      return email.charAt(0).toUpperCase();
-    } else {
-      return 'M'; // For Mentor
-    }
-  };
-
-  // Function to get avatar background color
-  const getAvatarBgColor = (sender) => {
-    return sender === 'Student' ? 'bg-blue-500' : 'bg-green-500';
-  };
-
   return (
-    <div className="container mx-auto py-10 md:py-[75px] px-5">
-      <div className="bg-white rounded-lg border p-4 lg:p-5 shadow-sm">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-800">
-            {studentMentorPair ? `Communication Thread: ${studentMentorPair}` : 'Email Thread'}
-          </h2>
-          <div className="flex gap-2">
-            <button 
-              onClick={() => fetchThreadDetails()} 
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-            >
-              Refresh
-            </button>
-            <button 
-              onClick={() => navigate('/mentor-emails')} 
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
-            >
-              Back to All Threads
-            </button>
+    <div className="container mx-auto py-10 md:py-[75px] px-5 max-w-6xl">
+      <div className="bg-white rounded-lg border shadow-lg overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
+          <div className="flex justify-between items-center">
+            <div>
+              <h2 className="text-2xl font-bold">
+                {studentMentorPair ? `Communication Thread` : 'Email Thread'}
+              </h2>
+              <p className="text-blue-100 mt-1">{studentMentorPair || 'View conversation history'}</p>
+            </div>
+            <div className="flex gap-3">
+              <button 
+                onClick={() => fetchThreadDetails()} 
+                className="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-blue-50 transition-all duration-200 font-medium flex items-center space-x-2 shadow-md"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>Refresh</span>
+              </button>
+              <button 
+                onClick={() => navigate('/mentor-emails')} 
+                className="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition-all duration-200 font-medium flex items-center space-x-2 shadow-md"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>Back</span>
+              </button>
+            </div>
           </div>
         </div>
         
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <p className="text-gray-500">Loading thread...</p>
-          </div>
-        ) : error ? (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            <p>{error}</p>
-            <p className="mt-2">
+        <div className="p-6">
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+          ) : error ? (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-5 rounded-lg">
+              <h3 className="text-lg font-semibold mb-2">Error Loading Thread</h3>
+              <p>{error}</p>
               <button 
                 onClick={() => navigate('/mentor-emails')} 
-                className="underline"
+                className="mt-4 text-blue-600 hover:text-blue-800 font-medium flex items-center"
               >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
                 Return to email list
               </button>
-            </p>
-          </div>
-        ) : emails.length === 0 ? (
-          <div className="text-center py-10">
-            <p className="text-gray-500">No emails found in this thread.</p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {emails.map((email, index) => (
-              <div 
-                key={email._id || index} 
-                className={`border rounded-lg p-4 ${getMessageClass(email.sender)}`}
+            </div>
+          ) : emails.length === 0 ? (
+            <div className="text-center py-16">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <p className="text-gray-500 text-lg">No emails found in this thread</p>
+              <button 
+                onClick={() => navigate('/mentor-emails')} 
+                className="mt-4 text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
               >
-                <div className="flex items-start space-x-4">
-                  <div className={`flex-shrink-0 w-10 h-10 rounded-full ${getAvatarBgColor(email.sender)} flex items-center justify-center text-white font-semibold`}>
-                    {getAvatarLetter(email.sender, email.student_email)}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex justify-between items-start mb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Return to email list
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              <div className="border-b pb-3 mb-6">
+                <h3 className="text-lg font-medium text-gray-700">
+                  {emails.length} {emails.length === 1 ? 'Message' : 'Messages'} in Conversation
+                </h3>
+              </div>
+              
+              {emails.map((email, index) => (
+                <div 
+                  key={email._id || index} 
+                  className={`border rounded-lg shadow-sm overflow-hidden ${index === emails.length-1 ? 'ring-2 ring-blue-500 ring-opacity-50' : ''}`}
+                >
+                  <div className={`px-5 py-3 ${email.sender === 'Student' ? 'bg-blue-50 border-blue-100' : 'bg-green-50 border-green-100'} border-b flex justify-between items-center`}>
+                    <div className="flex items-center">
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full ${email.sender === 'Student' ? 'bg-blue-500' : 'bg-green-500'} flex items-center justify-center text-white font-semibold mr-3`}>
+                        {email.sender === 'Student' ? email.student_email.charAt(0).toUpperCase() : 'M'}
+                      </div>
                       <div>
-                        <p className="font-medium">
+                        <p className="font-medium text-gray-800">
                           {email.sender === 'Student' ? email.student_email : email.mentor_email}
                         </p>
-                        <p className="text-sm text-gray-500">
-                          {formatDate(email.timestamp)}
-                        </p>
+                        <div className="flex items-center text-xs text-gray-500 mt-0.5">
+                          <span>{email.sender}</span>
+                          {email.recipient_type === 'CC' && (
+                            <span className="ml-2 px-1.5 py-0.5 bg-gray-200 text-gray-700 rounded text-xs font-medium">
+                              CC
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <div className="mt-2">
-                      <h3 className="font-medium">{email.subject_line}</h3>
-                      <div className="mt-2 text-sm whitespace-pre-wrap">
-                        {formatEmailContent(email.email_body)}
-                      </div>
+                    <div className="text-right">
+                      <span className="text-sm text-gray-500">
+                        {formatDate(email.timestamp)}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-5">
+                    <h3 className="font-semibold text-lg mb-2">{email.subject_line}</h3>
+                    <div className="prose prose-sm max-w-none text-gray-700 whitespace-pre-wrap">
+                      {formatEmailContent(email.email_body)}
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
