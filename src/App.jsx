@@ -8,7 +8,6 @@ import MentorEmails from "./pages/notification/MentorEmails";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 const Signup = lazy(() => import("./pages/auth/Signup"));
 const Login = lazy(() => import("./pages/auth/Login"));
-const Google = lazy(() => import("./pages/auth/googled31fe833979a818d.html"));
 const PrivacyPolicy = lazy(() => import("./pages/privacyPolicy/PrivacyPolicy"));
 const Notification = lazy(() => import("./pages/notification/Notification"));
 const ThreadView = lazy(() => import("./pages/notification/ThreadView"));
@@ -21,34 +20,33 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/googled31fe833979a818d.html" element={<Google />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route 
-              path="/emails" 
+            <Route
+              path="/emails"
               element={
                 <ProtectedRoute>
                   <Notification />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/mentor-emails" 
+            <Route
+              path="/mentor-emails"
               element={
                 <ProtectedRoute>
                   <MentorEmails />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/thread/:studentMentorPair" 
+            <Route
+              path="/thread/:studentMentorPair"
               element={
                 <ProtectedRoute>
                   <ThreadView />
                 </ProtectedRoute>
-              } 
+              }
             />
           </Route>
         </Routes>
