@@ -11,21 +11,21 @@ const MentorEmails = () => {
       name: "Student Email",
       selector: (row) => row?.studentEmail,
       sortable: true,
-      width: "25%",
+      width: "20%",
       cell: (row) => <div className="truncate font-medium">{row?.studentEmail}</div>,
     },
     {
       name: "Mentor Email",
       selector: (row) => row?.mentorEmail,
       sortable: true,
-      width: "25%",
+      width: "20%",
       cell: (row) => <div className="truncate font-medium">{row?.mentorEmail}</div>,
     },
     {
       name: "Parent Email",
       selector: (row) => row?.parentEmail,
       sortable: true,
-      width: "25%",
+      width: "20%",
       cell: (row) => <div className="truncate font-medium">{row?.parentEmail}</div>,
     },
     {
@@ -64,20 +64,7 @@ const MentorEmails = () => {
       ),
     },
     {
-      name: "Count",
-      selector: (row) => row?.totalMessages,
-      sortable: true,
-      width: "10%",
-      cell: (row) => (
-        <div className="text-center w-full">
-          <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">
-            {row?.totalMessages}
-          </span>
-        </div>
-      ),
-    },
-    {
-      name: "Last Message",
+      name: "Last Message Time",
       selector: (row) => row?.latestTimestamp,
       sortable: true,
       width: "25%",
