@@ -9,27 +9,27 @@ const MentorEmails = () => {
   const columns = [
     {
       name: "Student Email",
-      selector: (row) => row.studentEmail,
+      selector: (row) => row?.studentEmail,
       sortable: true,
       width: "25%",
-      cell: (row) => <div className="truncate font-medium">{row.studentEmail}</div>,
+      cell: (row) => <div className="truncate font-medium">{row?.studentEmail}</div>,
     },
     {
       name: "Mentor Email",
-      selector: (row) => row.mentorEmail,
+      selector: (row) => row?.mentorEmail,
       sortable: true,
       width: "25%",
-      cell: (row) => <div className="truncate font-medium">{row.mentorEmail}</div>,
+      cell: (row) => <div className="truncate font-medium">{row?.mentorEmail}</div>,
     },
     {
       name: "Last Sender",
-      selector: (row) => row.latest_sender,
+      selector: (row) => row?.latest_sender,
       sortable: true,
       width: "20%",
       cell: (row) => (
         <div className="flex items-center">
           <div className="flex items-center">
-            {row.latest_sender === "Student" ? (
+            {row?.latest_sender === "Student" ? (
               <div className="flex items-center">
                 <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-500 mr-3 font-medium text-sm">
                   S
@@ -45,10 +45,10 @@ const MentorEmails = () => {
               </div>
             )}
             <div className="flex items-center ml-2">
-              {row.recipient_type === "CC" && (
+              {row?.recipient_type === "CC" && (
                 <span className="px-1.5 py-0.5 bg-gray-200 text-gray-700 rounded text-xs font-medium mr-2">CC</span>
               )}
-              {row.needs_response && (
+              {row?.needs_response && (
                 <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" title="Needs response"></span>
               )}
             </div>
@@ -58,23 +58,23 @@ const MentorEmails = () => {
     },
     {
       name: "Count",
-      selector: (row) => row.totalMessages,
+      selector: (row) => row?.totalMessages,
       sortable: true,
       width: "10%",
       cell: (row) => (
         <div className="text-center w-full">
           <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">
-            {row.totalMessages}
+            {row?.totalMessages}
           </span>
         </div>
       ),
     },
     {
       name: "Last Message",
-      selector: (row) => row.latestTimestamp,
+      selector: (row) => row?.latestTimestamp,
       sortable: true,
       width: "25%",
-      cell: (row) => <div className="truncate font-medium">{row.latestTimestamp}</div>,
+      cell: (row) => <div className="truncate font-medium">{row?.latestTimestamp}</div>,
     },
   ];
 
