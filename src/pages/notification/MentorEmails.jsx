@@ -88,7 +88,7 @@ const MentorEmails = () => {
         credentials: "include",
       });
       const data = await response.json();
-      setThreadGroups(data || []);
+      setThreadGroups(data?.data || []);
     } catch (error) {
       console.log(error);
     } finally {
