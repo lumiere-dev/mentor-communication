@@ -22,6 +22,13 @@ const MentorEmails = () => {
       cell: (row) => <div className="truncate font-medium">{row?.mentorEmail}</div>,
     },
     {
+      name: "Parent Email",
+      selector: (row) => row?.parentEmail,
+      sortable: true,
+      width: "25%",
+      cell: (row) => <div className="truncate font-medium">{row?.parentEmail}</div>,
+    },
+    {
       name: "Last Sender",
       selector: (row) => row?.latest_sender,
       sortable: true,
