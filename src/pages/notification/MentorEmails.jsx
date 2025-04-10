@@ -11,28 +11,28 @@ const MentorEmails = () => {
       name: "Student Email",
       selector: (row) => row?.studentEmail,
       sortable: true,
-      width: "20%",
+      width: "15%",
       cell: (row) => <div className="truncate font-medium">{row?.studentEmail}</div>,
     },
     {
       name: "Mentor Email",
       selector: (row) => row?.mentorEmail,
       sortable: true,
-      width: "20%",
+      width: "15%",
       cell: (row) => <div className="truncate font-medium">{row?.mentorEmail}</div>,
     },
     {
       name: "Parent Email",
       selector: (row) => row?.parentEmail,
       sortable: true,
-      width: "20%",
+      width: "15%",
       cell: (row) => <div className="truncate font-medium">{row?.parentEmail}</div>,
     },
     {
       name: "Last Sender",
       selector: (row) => row?.latest_sender,
       sortable: true,
-      width: "20%",
+      width: "10%",
       cell: (row) => (
         <div className="flex items-center">
           <div className="flex items-center">
@@ -64,10 +64,17 @@ const MentorEmails = () => {
       ),
     },
     {
+      name: "Flag Count",
+      selector: (row) => row?.totalFlagCount,
+      sortable: true,
+      width: "25%",
+      cell: (row) => <div className="truncate font-medium">{row?.totalFlagCount}</div>,
+    },
+    {
       name: "Last Message Time",
       selector: (row) => row?.latestTimestamp,
       sortable: true,
-      width: "25%",
+      width: "20%",
       cell: (row) => <div className="truncate font-medium">{row?.latestTimestamp}</div>,
     },
   ];
