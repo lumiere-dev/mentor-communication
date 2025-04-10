@@ -64,18 +64,18 @@ const MentorEmails = () => {
       ),
     },
     {
-      name: "Flag Count",
+      name: "Flags",
       selector: (row) => row?.totalFlagCount,
       sortable: true,
       width: "10%",
       cell: (row) => <div className="truncate font-medium">{row?.totalFlagCount}</div>,
     },
     {
-      name: "Last Message Time",
+      name: "Last Message",
       selector: (row) => row?.lastMessageCreatedAt,
       sortable: true,
       width: "20%",
-      cell: (row) => <div className="truncate font-medium">{row?.lastMessageCreatedAt}</div>,
+      cell: (row) => <div className="truncate font-medium">{new Date(row?.lastMessageCreatedAt).toLocaleString()}</div>,
     },
   ];
 
