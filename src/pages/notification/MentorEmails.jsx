@@ -30,13 +30,13 @@ const MentorEmails = () => {
     },
     {
       name: "Last Sender",
-      selector: (row) => row?.latest_sender,
+      selector: (row) => row?.lastMessageSender,
       sortable: true,
       width: "17%",
       cell: (row) => (
         <div className="flex items-center">
           <div className="flex items-center">
-            {row?.latest_sender === "Student" ? (
+            {row?.lastMessageSender === "Student" ? (
               <div className="flex items-center">
                 <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-500 mr-3 font-medium text-sm">
                   S
