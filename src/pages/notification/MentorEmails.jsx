@@ -136,7 +136,7 @@ const MentorEmails = () => {
         <div className="bg-blue-50 px-6 py-3 border-y border-blue-100 flex items-center">
           <div className="flex items-center text-sm text-blue-700">
             <span className="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>
-            <span className="font-medium">Messages requiring response within 10 minutes</span>
+            <span className="font-medium">Messages requiring response within 24 hours</span>
           </div>
         </div>
 
