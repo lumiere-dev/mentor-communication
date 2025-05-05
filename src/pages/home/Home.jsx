@@ -28,8 +28,7 @@ const Home = () => {
             Lumiere Education
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-            Connecting students with educational mentors for personalized growth
-            and success
+            An ambitious research program for high school students
           </p>
           <a
             href="/login"
