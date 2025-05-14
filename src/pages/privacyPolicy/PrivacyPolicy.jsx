@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
       <header className="mb-16 text-center">
         <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">Privacy Policy</h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Effective Date: February 17, 2025
+          Effective Date: May 6, 2025
         </p>
       </header>
 
@@ -36,16 +36,14 @@ const PrivacyPolicy = () => {
         <ul className="list-disc list-inside ml-4 mb-4 text-gray-700 space-y-2">
           <li>
             Access only emails that involve a Lumiere stakeholder (students,
-            program managers, parents), while filtering out all other
-            communications.
+            program managers, parents).
           </li>
           <li>
             Collect metadata such as timestamps indicating when an email was
             sent or received.
           </li>
           <li>
-            Access the body of an email only if it has not received a response
-            within 24 hours.
+            Collect body and subject lines of relevant emails.
           </li>
         </ul>
       </section>
@@ -82,16 +80,10 @@ const PrivacyPolicy = () => {
         </p>
         <ul className="list-disc list-inside ml-4 text-gray-700 space-y-2">
           <li>
-            All accessed email data and metadata are retained for a maximum of
-            24 hours.
+            All accessed email data and metadata are retained for a period of 24 months.
           </li>
           <li>
-            Data is automatically deleted after 24 hours, except for emails
-            shared with program managers when the response time exceeds 24
-            hours.
-          </li>
-          <li>
-            Employees cannot request earlier deletion due to operational
+            Contractors cannot request earlier deletion due to operational
             requirements.
           </li>
         </ul>
@@ -125,6 +117,10 @@ const PrivacyPolicy = () => {
           </li>
           <li>
             Temporary storage in Airtable, which is compliant with GDPR and all
+            other applicable data protection laws.
+          </li>
+          <li>
+            Long term storage in Mongo DB, which is compliant with GDPR and all 
             other applicable data protection laws.
           </li>
           <li>
@@ -196,7 +192,7 @@ const PrivacyPolicy = () => {
             </a>
           </p>
           <p className="text-gray-700 mt-4 font-medium">
-            By continuing to use our services, employees acknowledge that they
+            By continuing to use our services, contractors acknowledge that they
             have read, understood, and agreed to the terms of this Privacy Policy.
           </p>
         </div>
