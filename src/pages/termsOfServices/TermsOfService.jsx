@@ -141,12 +141,12 @@ const TermsOfService = () => {
         <p className="text-gray-700 leading-relaxed">
           We may update these Terms from time to time. Updates will be posted at{" "}
           <a
-            href="https://mentor-communication-z4sq.vercel.app/"
+            href="https://mentors.lumiere-education.com/"
             className="text-blue-600 hover:underline"
             target="_blank"
             rel="noopener noreferrer"
           >
-            https://mentor-communication-z4sq.vercel.app
+            https://mentors.lumiere-education.com/
           </a>
           . Continued use of the App after changes means you accept the revised
           Terms.
@@ -211,8 +211,8 @@ const TermsOfService = () => {
             <h3 className="text-xl font-semibold text-indigo-700">Website</h3>
           </div>
           <p className="text-gray-700 pl-2">
-            <a href="https://mentor-communication-z4sq.vercel.app/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
-              https://mentor-communication-z4sq.vercel.app
+            <a href="https://mentors.lumiere-education.com/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+              https://mentors.lumiere-education.com/
             </a>
           </p>
         </div>
