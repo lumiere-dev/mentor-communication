@@ -1,29 +1,44 @@
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { BsMicrosoft } from "react-icons/bs";
 
 const Login = () => {
   const location = useLocation();
-
   // Get the redirect path from location state (passed by ProtectedRoute)
   const from = location.state?.from?.pathname || "/mentor-emails";
 
-  const handleConnect = async (e) => {
+  const handleConnectGoogle = async (e) => {
     e.preventDefault();
     try {
       const serverUrl = import.meta.env.VITE_REACT_APP_SERVER_URL;
       if (!serverUrl) return alert("server url not found");
-
       // Store the intended redirect location in localStorage
       localStorage.setItem("redirectAfterLogin", from);
-
-      const response = await axios.get(`${serverUrl}/get-url`, {
+      const response = await axios.get(`${serverUrl}/get-url/google`, {
         withCredentials: true,
         params: {
           redirect: from,
         },
       });
-
+      window.location.href = response?.data?.authUrl;
+    } catch (error) {
+      console.log("server url not found", error);
+    }
+  };
+  const handleConnectMicrosoft = async (e) => {
+    e.preventDefault();
+    try {
+      const serverUrl = import.meta.env.VITE_REACT_APP_SERVER_URL;
+      if (!serverUrl) return alert("server url not found");
+      // Store the intended redirect location in localStorage
+      localStorage.setItem("redirectAfterLogin", from);
+      const response = await axios.get(`${serverUrl}/get-url/microsoft`, {
+        withCredentials: true,
+        params: {
+          redirect: from,
+        },
+      });
       window.location.href = response?.data?.authUrl;
     } catch (error) {
       console.log("server url not found", error);
@@ -37,14 +52,22 @@ const Login = () => {
         <div className="lg:col-span-6 hidden lg:block"></div>
         <div className="lg:col-span-6 grid place-items-center">
           <div className="w-full rounded-lg py-5 px-4">
-            <h6 className="text-center text-gray-950 text-xl md:text-2xl font-semibold">Login</h6>
+            <h6 className="text-center text-gray-950 text-xl md:text-2xl font-
+            semibold">Login</h6>
             <form className="mt-5 rounded-lg max-w-[500px] mx-auto grid grid-cols-1 gap-4">
               <button
-                onClick={handleConnect}
+                onClick={handleConnectGoogle}
                 className="flex items-center justify-center gap-4 w-full mx-auto h-[50px] px-4 rounded-md shadow-lg bg-white cursor-pointer font-medium"
               >
                 <FcGoogle fontSize={24} />
                 Continue with Google
+              </button>
+              <button
+                onClick={handleConnectMicrosoft}
+                className="flex items-center justify-center gap-4 w-full mx-auto h-[50px] px-4 rounded-md shadow-lg bg-white cursor-pointer font-medium"
+              >
+                <BsMicrosoft fontSize={24} />
+                Continue with Microsoft
               </button>
             </form>
           </div>
