@@ -62,13 +62,7 @@ const Login = () => {
                 <FcGoogle fontSize={24} />
                 Continue with Google
               </button>
-              <button
-                onClick={handleConnectMicrosoft}
-                className="flex items-center justify-center gap-4 w-full mx-auto h-[50px] px-4 rounded-md shadow-lg bg-white cursor-pointer font-medium"
-              >
-                <BsMicrosoft fontSize={24} />
-                Continue with Microsoft
-              </button>
+              
             </form>
           </div>
         </div>
