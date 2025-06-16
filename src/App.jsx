@@ -11,6 +11,7 @@ const Login = lazy(() => import("./pages/auth/Login"));
 const PrivacyPolicy = lazy(() => import("./pages/privacyPolicy/PrivacyPolicy"));
 const Notification = lazy(() => import("./pages/notification/Notification"));
 const ThreadView = lazy(() => import("./pages/notification/ThreadView"));
+const TestingAuth=lazy(()=>import("./pages/auth/testingLogin"))
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/testing" element={<TestingAuth />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />

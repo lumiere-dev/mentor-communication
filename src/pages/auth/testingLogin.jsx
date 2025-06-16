@@ -1,6 +1,7 @@
-import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { BsMicrosoft } from "react-icons/bs";
 
 const Login = () => {
   const location = useLocation();
@@ -25,7 +26,24 @@ const Login = () => {
       console.log("server url not found", error);
     }
   };
-
+  const handleConnectMicrosoft = async (e) => {
+    e.preventDefault();
+    try {
+      const serverUrl = import.meta.env.VITE_REACT_APP_SERVER_URL;
+      if (!serverUrl) return alert("server url not found");
+      // Store the intended redirect location in localStorage
+      localStorage.setItem("redirectAfterLogin", from);
+      const response = await axios.get(`${serverUrl}/get-url/microsoft`, {
+        withCredentials: true,
+        params: {
+          redirect: from,
+        },
+      });
+      window.location.href = response?.data?.authUrl;
+    } catch (error) {
+      console.log("server url not found", error);
+    }
+  };
   return (
     <section
       className={`w-full h-svh md:h-screen overflow-y-scroll scroll-0 bg-[#f0f0f0] md:bg-[url('https://res.cloudinary.com/hamzanafasat/image/upload/v1742559578/hymhem1uuburthm3aewg.png')]  bg-contain bg-no-repeat bg-left`}
@@ -43,6 +61,13 @@ const Login = () => {
               >
                 <FcGoogle fontSize={24} />
                 Continue with Google
+              </button>
+              <button
+                onClick={handleConnectMicrosoft}
+                className="flex items-center justify-center gap-4 w-full mx-auto h-[50px] px-4 rounded-md shadow-lg bg-white cursor-pointer font-medium"
+              >
+                <BsMicrosoft fontSize={24} />
+                Continue with Microsoft
               </button>
             </form>
           </div>
